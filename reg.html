@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Coordination Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('TCE-Madurai-Campus.jpeg') no-repeat center center fixed; /* Added background image */
+            background-size: cover; /* Ensures the background image covers the entire screen */
+            color: #333;
+        }
+        .container {
+            width: 50%;
+            padding: 30px; /* Increased padding for more spacing around the form */
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background for readability */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-top: 5px solid #0077cc;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .input-box {
+            margin-bottom: 20px; /* Increased margin for more spacing between form elements */
+            position: relative;
+            padding: 10px;
+        }
+        .input-box input, .input-box select {
+            width: 100%;
+            padding: 12px; /* Added padding to input fields */
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-box input:focus, .input-box select:focus {
+            border-color: #0077cc;
+            box-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
+        }
+        .input-box.invalid input {
+            border-color: red;
+        }
+        .input-box .validation-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+        h2 {
+            color: #0077cc;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 119, 204, 0.3);
+            margin-bottom: 15px; /* Added space below the header */
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            padding: 12px 25px; /* Increased padding for buttons */
+            border: none;
+            background: #0077cc;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .buttons button:hover {
+            background: #005fa3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .buttons button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 8px; /* Increased margin for label spacing */
+            font-weight: bold;
+        }
+        .input-box input[type="radio"], .input-box input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* New CSS additions */
+        .input-box input:hover, .input-box select:hover {
+            border-color: #00aaff;
+        }
+
+        .input-box input:focus, .input-box select:focus {
+            transition: all 0.4s ease-in-out;
+            transform: scale(1.02);
+        }
+
+        #submitButton {
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        #submitButton:hover {
+            background: #45a049;
+            box-shadow: 0 4px 12px rgba(0, 128, 0, 0.4);
+        }
+
+        .container {
+            transition: all 0.5s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .buttons button {
+            background: linear-gradient(135deg, #0077cc, #005fa3);
+            border-radius: 10px;
+        }
+
+        .input-box input, .input-box select {
+            border-radius: 12px;
+        }
+
+        select {
+            background-color: #f1f1f1;
+        }
+        select:hover {
+            background-color: #e0e0e0;
+        }
+
+        .input-box input:focus, .input-box select:focus {
+            border: 2px solid #00aaff;
+            box-shadow: 0 0 8px rgba(0, 170, 255, 0.6);
+        }
+
+        .step {
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        .step:not(.active) {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="registrationForm" method="GET" action="confirmation.html">
+            <!-- Step 1 -->
+            <div class="step active" id="step1">
+                <h2>Step 1: Basic Information</h2>
+                <div class="input-box" id="emailBox">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <span class="validation-icon"></span>
+                </div>
+                <div class="input-box">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step" id="step2">
+                <h2>Step 2: Preferences</h2>
+                <div class="input-box">
+                    <label for="club">Select Club:</label>
+                    <select id="club" name="club" onchange="fillRole()" required>
+                        <option value="">Choose a club</option>
+                        <option value="dance">Dance Club</option>
+                        <option value="music">Music Club</option>
+                        <option value="coding">Coding Club</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="role">Preferred Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="">Choose a role</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step" id="step3">
+                <h2>Step 3: Confirm Choices</h2>
+                <div class="input-box">
+                    <label>Gender:</label>
+                    <input type="radio" id="male" name="gender" value="Male" required> Male
+                    <input type="radio" id="female" name="gender" value="Female"> Female
+                </div>
+                <div class="input-box">
+                    <label>Interests:</label>
+                    <input type="checkbox" name="interests" value="Sports"> Sports
+                    <input type="checkbox" name="interests" value="Arts"> Arts
+                    <input type="checkbox" name="interests" value="Technology"> Technology
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <button type="button" id="prevButton" onclick="prevStep()" disabled>Previous</button>
+                <button type="button" id="nextButton" onclick="nextStep()">Next</button>
+                <button type="submit" id="submitButton" style="display: none;">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const steps = document.querySelectorAll('.step');
+        const emailField = document.getElementById('email');
+        const emailBox = document.getElementById('emailBox');
+        const validationIcon = emailBox.querySelector('.validation-icon');
+
+        // Validation for email
+        emailField.addEventListener('input', () => {
+            const emailValue = emailField.value;
+            if (emailValue.endsWith('@tce.edu.in')) {
+                emailBox.classList.remove('invalid');
+                validationIcon.textContent = '👍';
+            } else {
+                emailBox.classList.add('invalid');
+                validationIcon.textContent = '👎';
+            }
+        });
+
+        // Dropdown onchange function
+        function fillRole() {
+            const club = document.getElementById('club').value;
+            const role = document.getElementById('role');
+            role.innerHTML = '<option value="">Choose a role</option>'; // Reset options
+
+            if (club === 'dance') {
+                role.innerHTML += '<option value="Dancer">Dancer</option><option value="Choreographer">Choreographer</option>';
+            } else if (club === 'music') {
+                role.innerHTML += '<option value="Singer">Singer</option><option value="Instrumentalist">Instrumentalist</option>';
+            } else if (club === 'coding') {
+                role.innerHTML += '<option value="Developer">Developer</option><option value="Designer">Designer</option>';
+            }
+        }
+
+        // Show next step
+        function nextStep() {
+            if (currentStep < steps.length) {
+                steps[currentStep - 1].classList.remove('active');
+                currentStep++;
+                steps[currentStep - 1].classList.add('active');
+            }
+
+            if (currentStep === steps.length) {
+                document.getElementById('nextButton').style.display = 'none';
+                document.getElementById('submitButton').style.display = 'inline-block';
+            }
+
+            document.getElementById('prevButton').disabled = false;
+        }
+
+        // Show previous step
+        function prevStep() {
+            if (currentStep > 1) {
+                steps[currentStep - 1].classList.remove('active');
+                currentStep--;
+                steps[currentStep - 1].classList.add('active');
+            }
+
+            if (currentStep === 1) {
+                document.getElementById('prevButton').disabled = true;
+            }
+
+            document.getElementById('nextButton').style.display = 'inline-block';
+            document.getElementById('submitButton').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

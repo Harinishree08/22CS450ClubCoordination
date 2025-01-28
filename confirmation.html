@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+            background-image: url('TCE-Madurai-Campus.jpeg'); /* Add your image URL here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .container {
+            width: 60%;
+            background-color: rgba(255, 255, 255, 0.5); /* Slight transparency to let the background show through */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: #0077cc;
+        }
+        .confirmation-detail {
+            margin-bottom: 20px;
+        }
+        .confirmation-detail span {
+            font-weight: bold;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #0077cc;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .button-container a:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registration Confirmation</h2>
+        
+        <div class="confirmation-detail">
+            <span>Email: </span><span id="confirmationEmail"></span>
+        </div>
+        <div class="confirmation-detail">
+            <span>Name: </span><span id="confirmationName"></span>
+        </div>
+        <div class="confirmation-detail">
+            <span>Club: </span><span id="confirmationClub"></span>
+        </div>
+        <div class="confirmation-detail">
+            <span>Role: </span><span id="confirmationRole"></span>
+        </div>
+        <div class="confirmation-detail">
+            <span>Gender: </span><span id="confirmationGender"></span>
+        </div>
+        <div class="confirmation-detail">
+            <span>Interests: </span><span id="confirmationInterests"></span>
+        </div>
+
+        <div class="button-container">
+            <a href="Login.html">Back to Registration</a>
+        </div>
+    </div>
+
+    <script>
+        // Assuming the form data is submitted as query parameters
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+
+            // Fill in the confirmation details with the data from the form
+            document.getElementById('confirmationEmail').textContent = params.get('email');
+            document.getElementById('confirmationName').textContent = params.get('name');
+            document.getElementById('confirmationClub').textContent = params.get('club');
+            document.getElementById('confirmationRole').textContent = params.get('role');
+            document.getElementById('confirmationGender').textContent = params.get('gender');
+            document.getElementById('confirmationInterests').textContent = params.getAll('interests').join(', ');
+        }
+    </script>
+
+</body>
+</html>
