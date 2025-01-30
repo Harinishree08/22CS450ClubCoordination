@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Club Coordination System</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome to the Club Coordination System</h1>
+        <p>This system allows students to register for different clubs and activities at our university.</p>
+
+        <section>
+            <h2>Our Available Clubs</h2>
+            <ul>
+                <li><b>Sports Club</b> - A club for all sports enthusiasts</li>
+                <li><i>Music Club</i> - For students passionate about music</li>
+                <li><mark>Dance Club</mark> - A club for dancers of all skill levels</li>
+                <li>Literary Club</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Registration</h2>
+            <form action="/submit_registration" method="POST">
+                <label for="student-name">Student Name</label>
+                <input type="text" id="student-name" name="student-name" required>
+                <br><br>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <br><br>
+
+                <label for="club-selection">Select Club(s)</label>
+                <ul>
+                    <li><input type="checkbox" name="clubs" value="sports"> Sports Club</li>
+                    <li><input type="checkbox" name="clubs" value="music"> Music Club</li>
+                    <li><input type="checkbox" name="clubs" value="dance"> Dance Club</li>
+                </ul>
+                <br>
+
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Our Team</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Contact</th>
+                </tr>
+                <tr>
+                    <td>Priya</td>
+                    <td>Coordinator</td>
+                    <td><a href="mailto:priya@example.com">priya@example.com</a></td>
+                </tr>
+                <tr>
+                    <td>Mala</td>
+                    <td>Assistant Coordinator</td>
+                    <td><a href="mailto:mala@example.com">mala@example.com</a></td>
+                </tr>
+            </table>
+        </section>
+
+        <footer>
+            <p><b>For inquiries:</b> Please contact our coordinators for more information.</p>
+        </footer>
+    </div>
+
+    <section>
+        <figure>
+            <img src="TCE-Madurai-Campus.jpeg" alt="Image" width="400" height="auto">
+            <figcaption>Join our exciting clubs today!</figcaption>
+        </figure>
+    </section>
+</body>
+</html>
