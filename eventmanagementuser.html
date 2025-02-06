@@ -1,0 +1,380 @@
+Share
+
+HL
+You said:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCE - Club Event Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(240, 240, 240);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      
+      background-position: center;
+    }
+
+    header {
+      background-color: rgba(0, 123, 255, 0.8); 
+      color: white;
+      padding: 0px;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      width: 80%; 
+      max-width: 1200px; 
+      margin: 20px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.9); 
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow-y: auto;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgb(230, 240, 255);
+      margin: 15px 0;
+      padding: 20px;
+      border-left: 5px solid rgb(0, 123, 255);
+      box-shadow: 2px 2px 5px gray;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .register-form {
+      display: none;
+      background: rgb(220, 240, 220);
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+
+    .register-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .register-btn:hover {
+      background-color: darkblue;
+    }
+
+    input[type="text"], input[type="email"], select {
+      font-size: 16px;
+    }
+
+    .submit-btn {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Thiagarajar_College_of_Engineering_logo.png" alt="Logo" /> 
+    <h1>📅 College Event Management</h1>
+  </header>
+
+  <main>
+    <!-- Event List Section -->
+    <section id="event-list">
+      <h2>🎉 Upcoming Events</h2>
+      <ul>
+        <!-- Welcome Party -->
+        <li>
+          <strong>Welcome Party</strong> - 2025-02-10 18:00<br />
+          📍 OPEN AUDITORIUM | 👤 Mr.Chandru & Mr.Suresh<br />
+          <em>Let's welcome our first years to TCE!</em>
+        </li>
+
+        <!-- Tech Fest -->
+        <li>
+          <strong>Tech Fest</strong> - 2025-03-15 10:00<br />
+          📍 K.S.AUDITORIUM | 👤 Mr.Ram & Mrs.Sainthavi
+          <button class="register-btn" onclick="toggleRegisterForm(this)">
+            Register
+          </button>
+          <div class="register-form">
+            <input type="text" placeholder="Your Name" required>
+          
+            <label>Select Year:</label><br>
+            <input type="radio" name="year" value="1st Year" onchange="logChange(event)"> 1st Year<br>
+            <input type="radio" name="year" value="2nd Year" onchange="logChange(event)"> 2nd Year<br>
+            <input type="radio" name="year" value="3rd Year" onchange="logChange(event)"> 3rd Year<br>
+            <input type="radio" name="year" value="4th Year" onchange="logChange(event)"> 4th Year<br>
+          
+            <label>Select Department:</label>
+            <select onchange="logChange(event)">
+              <option value="">--Select--</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="MECH">MECH</option>
+            </select>
+            <input type="email" placeholder="Your Email" id="email-input" required>
+            <span id="email-error" style="color: red; font-size: 12px; display: none;">Invalid email format</span>
+            
+            <button class="register-btn submit-btn" onclick="submitRegistration(event)">
+              Submit Registration
+            </button>
+          </div>
+          
+        </li>
+
+        <!-- Coding Competition -->
+        <li>
+          <strong>Coding Competition</strong> - 2025-04-20 12:00<br />
+          📍 CSE SEMINAR HALL | 👤 Coders club
+          <button class="register-btn" onclick="toggleRegisterForm(this)">
+            Register
+        </button>
+        <div class="register-form">
+            <input type="text" placeholder="Your Name" required>
+          
+            <label>Select Year:</label><br>
+            <input type="radio" name="year" value="1st Year" onchange="logChange(event)"> 1st Year<br>
+            <input type="radio" name="year" value="2nd Year" onchange="logChange(event)"> 2nd Year<br>
+            <input type="radio" name="year" value="3rd Year" onchange="logChange(event)"> 3rd Year<br>
+            <input type="radio" name="year" value="4th Year" onchange="logChange(event)"> 4th Year<br>
+          
+            <label>Select Department:</label>
+            <select onchange="logChange(event)">
+              <option value="">--Select--</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="MECH">MECH</option>
+            </select>
+            <input type="email" placeholder="Your Email" id="email-input" required>
+            <span id="email-error" style="color: red; font-size: 12px; display: none;">Invalid email format</span>
+            
+            <button class="register-btn submit-btn" onclick="submitRegistration(event)">
+              Submit Registration
+            </button>
+          </div>
+          
+        </li>
+
+        <!-- Voice of TCE (Register with Video) -->
+        <li>
+          <strong>Voice of TCE</strong> - 2025-05-05 14:00<br />
+          📍 MAIN AUDITORIUM | 👤 Music Club
+          <button class="register-btn" onclick="toggleRegisterForm(this)">
+            Register 
+          </button>
+          <div class="register-form">
+            <input type="text" placeholder="Your Name" required>
+          
+            <label>Select Year:</label><br>
+            <input type="radio" name="year" value="1st Year" onchange="logChange(event)"> 1st Year<br>
+            <input type="radio" name="year" value="2nd Year" onchange="logChange(event)"> 2nd Year<br>
+            <input type="radio" name="year" value="3rd Year" onchange="logChange(event)"> 3rd Year<br>
+            <input type="radio" name="year" value="4th Year" onchange="logChange(event)"> 4th Year<br>
+          
+            <label>Select Department:</label>
+            <select onchange="logChange(event)">
+              <option value="">--Select--</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="MECH">MECH</option>
+            </select>
+            <input type="email" placeholder="Your Email" id="email-input" required>
+            <span id="email-error" style="color: red; font-size: 12px; display: none;">Invalid email format</span>
+            
+            <button class="register-btn submit-btn" onclick="submitRegistration(event)">
+              Submit Registration
+            </button>
+          </div>
+          
+        </li>
+
+        <!-- Ecell Recruitment -->
+        <li>
+          <strong>Ecell Recruitment</strong> - 2025-06-01 11:00<br />
+          📍 E-CELL OFFICE | 👤 Entrepreneurship cell 
+          <button class="register-btn" onclick="toggleRegisterForm(this)">
+            Register
+          </button>
+          <div class="register-form">
+            <input type="text" placeholder="Your Name" required>
+          
+            <label>Select Year:</label><br>
+            <input type="radio" name="year" value="1st Year" onchange="logChange(event)"> 1st Year<br>
+            <input type="radio" name="year" value="2nd Year" onchange="logChange(event)"> 2nd Year<br>
+            <input type="radio" name="year" value="3rd Year" onchange="logChange(event)"> 3rd Year<br>
+            <input type="radio" name="year" value="4th Year" onchange="logChange(event)"> 4th Year<br>
+          
+            <label>Select Department:</label>
+            <select onchange="logChange(event)">
+              <option value="">--Select--</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="MECH">MECH</option>
+            </select>
+            <input type="email" placeholder="Your Email" id="email-input" required>
+            <span id="email-error" style="color: red; font-size: 12px; display: none;">Invalid email format</span>
+
+            <button class="register-btn submit-btn" onclick="submitRegistration(event)">
+              Submit Registration
+            </button>
+          </div>
+          
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    function toggleRegisterForm(button) {
+      const form = button.nextElementSibling;
+      if (form.style.display === "none" || form.style.display === "") {
+        form.style.display = "block";
+      } else {
+        form.style.display = "none";
+      }
+    }
+
+    function logKeyDown(event) {
+      console.log("Key down: " + event.key);
+    }
+
+    function logKeyUp(event) {
+      console.log("Key up: " + event.key);
+    }
+
+    function logChange(event) {
+      console.log("Changed: " + event.target.value);
+    }
+
+    function submitRegistration(event) {
+      event.preventDefault();
+      console.log("Registration submitted!");
+      
+      let form = event.target.parentElement;
+      setTimeout(() => {
+        form.style.display = "none";
+      }, 3000);
+    }
+
+    document.getElementById("event-list").addEventListener("mouseover", function(e) {
+      if (e.target.classList.contains("register-btn")) {
+        console.log("Mouse over button: " + e.target.textContent);
+      }
+    });
+
+    document.getElementById("event-list").addEventListener("mouseout", function(e) {
+      if (e.target.classList.contains("register-btn")) {
+        console.log("Mouse out button: " + e.target.textContent);
+      }
+    });
+
+    document.getElementById("event-list").addEventListener("mouseenter", function(e) {
+      if (e.target.classList.contains("register-form")) {
+        e.target.style.backgroundColor = "#ffffcc";
+      }
+    }, true);
+
+    document.getElementById("event-list").addEventListener("mouseleave", function(e) {
+      if (e.target.classList.contains("register-form")) {
+        e.target.style.backgroundColor = "rgb(220, 240, 220)";
+      }
+    }, true);
+    function startRegistrationTimer(form) {
+  setTimeout(function () {
+    if (form.style.display === "block") { // Check if form is still open
+      alert("⏳ Session ended! Registration time is up.");
+      form.style.display = "none"; // Hide form
+    }
+  }, 120000); // 30 seconds
+}
+
+function toggleRegisterForm(button) {
+  const form = button.nextElementSibling;
+  
+  if (form.style.display === "none" || form.style.display === "") {
+    form.style.display = "block";
+    startRegistrationTimer(form); // Start countdown when form opens
+  } else {
+    form.style.display = "none";
+  }
+}
+function validateEmail(email) {
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailPattern.test(email);
+}
+
+function submitRegistration(event) {
+  event.preventDefault(); // Prevent form submission
+
+  let form = event.target.parentElement;
+  let nameInput = form.querySelector("input[type='text']");
+  let emailInput = form.querySelector("input[type='email']");
+  let emailError = form.querySelector("#email-error");
+  let yearInput = form.querySelector("input[name='year']:checked");
+  let departmentInput = form.querySelector("select");
+
+  // Check if all fields are filled
+  if (!nameInput.value.trim()) {
+    alert("⚠ Please enter your name.");
+    return;
+  }
+
+  if (!validateEmail(emailInput.value)) {
+    emailError.style.display = "block";
+    alert("⚠ Please enter a valid email address.");
+    return;
+  } else {
+    emailError.style.display = "none";
+  }
+
+  if (!yearInput) {
+    alert("⚠ Please select your year.");
+    return;
+  }
+
+  if (!departmentInput.value) {
+    alert("⚠ Please select your department.");
+    return;
+  }
+
+  // Show success alert
+  alert(🎉 Registration Successful!\nName: ${nameInput.value}\nEmail: ${emailInput.value}\nYear: ${yearInput.value}\nDepartment: ${departmentInput.value});
+
+  // Show confirmation message inside the form
+  form.innerHTML = "<p style='color: green; font-weight: bold;'>✔ Registration Successful!</p>";
+
+  // Hide the form after 3 seconds
+  setTimeout(() => {
+    form.style.display = "none";
+  }, 3000);
+}
+
+
+  </script>
+</body>
+</html>

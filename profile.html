@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fc;
+    background-image: url('TCE-Madurai-Campus.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+
+        header {
+            background-color: #3b82f6;
+            color: white;
+            padding: 25px 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 4px solid #2d4a8f;
+            opacity: 0.8;
+           
+        }
+
+        main {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+        .profile-container {
+            background: white;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-container:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-header img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .profile-header h2 {
+            font-size: 2.2rem;
+            color: #3b82f6;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.8rem;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+
+        .profile-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .profile-details li {
+            background: #e4f0ff;
+            margin: 12px 0;
+            padding: 18px;
+            border-left: 6px solid #3b82f6;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-details li:hover {
+            transform: scale(1.03);
+        }
+
+        button {
+            padding: 12px 24px;
+            margin-top: 25px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #2d4a8f;
+        }
+
+        .register-form {
+            display: none;
+            background: #e0f7fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+            width: 100%;
+            opacity: 0.85;
+        }
+
+        .register-form input,
+        .register-form select {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .register-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 6px;
+        }
+
+        .register-btn:hover {
+            background-color: #218838;
+        }
+
+        .profile-details p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        #club-dropdown {
+            padding: 14px;
+            width: 100%;
+            font-size: 1.1rem;
+            margin-top: 25px;
+        }
+
+        #club-details {
+            margin-top: 25px;
+            padding: 25px;
+            background-color: #e8f4f9;
+            border-radius: 10px;
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #waitlist-rejected {
+            margin-top: 25px;
+        }
+
+        #waitlist-rejected li {
+            background-color: #f9dada;
+            padding: 12px;
+            margin: 8px 0;
+            border-left: 6px solid #f44336;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="Thiagarajar_College_of_Engineering_logo.png" alt="Logo" /> 
+    <h1>Student Profile</h1>
+</header>
+
+<main>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img id="profile-pic" src="prof.jpg" alt="Profile Picture">
+            <h2 id="name"></h2>
+            <p>Reg No: <span id="regNo"></span></p>
+            <p>Email: <span id="email"></span></p>
+        </div>
+
+        <div class="profile-details">
+            <h3>Clubs Participated</h3>
+            <select id="club-dropdown">
+                <option value="">Select a club</option>
+            </select>
+            <div id="club-details"></div>
+            <h3>Waitlisted / Rejected Clubs</h3>
+            <ul id="waitlist-rejected"></ul>
+        </div>
+
+        <button id="edit-btn">Edit Profile</button>
+        <div class="register-form" id="edit-form">
+            <h3>Edit Profile</h3>
+            <input type="text" id="name-input" placeholder="New Name" />
+            <input type="text" id="regno-input" placeholder="New Registration No" />
+            <input type="email" id="email-input" placeholder="New Email" />
+            <input type="text" id="profile-pic-input" placeholder="New Profile Picture URL" />
+            <button class="register-btn" id="save-btn">Save Changes</button>
+        </div>
+    </div>
+</main>
+
+<script>
+    // Student Object with Getters, Setters, and Delete
+    const student = {
+        name: "John Doe",
+        regNo: "123456",
+        email: "johndoe@example.com",
+        profilePic: "prof.jpg",
+        clubs: [
+            { name: "Robotics Club", credits: 20, activities: ["Robot Building", "Competition"], attendance: "80%" },
+            { name: "AI Club", credits: 15, activities: ["AI Workshop", "Lecture"], attendance: "90%" },
+            { name: "Music Club", credits: 10, activities: ["Concert", "Jamming"], attendance: "75%" }
+        ],
+        waitlistedOrRejectedClubs: ["Sports Club", "Dance Club"],
+
+        // Getters and Setters for profile
+        get getEmail() {
+            return this.email;
+        },
+        set setEmail(newEmail) {
+            this.email = newEmail;
+            document.getElementById("email").textContent = newEmail;
+        },
+        set setName(newName) {
+            this.name = newName;
+            document.getElementById("name").textContent = newName;
+        },
+        set setRegNo(newRegNo) {
+            this.regNo = newRegNo;
+            document.getElementById("regNo").textContent = newRegNo;
+        },
+        set setProfilePic(newProfilePic) {
+            this.profilePic = newProfilePic;
+            document.getElementById("profile-pic").src = newProfilePic;
+        },
+
+        // Deleting a club using 'delete' operation
+        removeClub(clubName) {
+            const index = this.clubs.findIndex(club => club.name === clubName);
+            if (index !== -1) {
+                delete this.clubs[index];
+                this.clubs = this.clubs.filter(club => club !== undefined); // Removing 'undefined' entries
+            }
+        },
+
+        // Function to demonstrate apply, call, and bind
+        showDetails: function() {
+            return `${this.name} (${this.regNo}) - Email: ${this.email}`;
+        }
+    };
+
+    // Using apply()
+    const showStudentDetails = student.showDetails;
+    const details = showStudentDetails.apply(student); 
+    console.log(details); 
+
+    // Using bind()
+    const boundShowDetails = showStudentDetails.bind(student);
+    console.log(boundShowDetails()); 
+
+    // Using call()
+    console.log(showStudentDetails.call(student)); 
+
+    // Arrow function with a single line
+    const clubCount = () => student.clubs.length;
+    console.log(`Number of clubs: ${clubCount()}`); 
+
+    // Multiline Arrow Function
+    const getClubActivities = (clubName) => {
+        const club = student.clubs.find(c => c.name === clubName);
+        return club ? club.activities.join(", ") : "No activities found.";
+    };
+    console.log(getClubActivities("Robotics Club")); on"
+
+    // Display profile details
+    document.getElementById("name").textContent = student.name;
+    document.getElementById("regNo").textContent = student.regNo;
+    document.getElementById("email").textContent = student.getEmail;
+    document.getElementById("profile-pic").src = student.profilePic;
+
+    // Populate Club Dropdown
+    const clubDropdown = document.getElementById("club-dropdown");
+    student.clubs.forEach(club => {
+        const option = document.createElement("option");
+        option.value = club.name;
+        option.textContent = club.name;
+        clubDropdown.appendChild(option);
+    });
+
+    // Update Club Details when a club is selected
+    clubDropdown.addEventListener("change", function () {
+        const selectedClubName = this.value;
+        const club = student.clubs.find(c => c.name === selectedClubName);
+        const clubDetails = document.getElementById("club-details");
+
+        if (club) {
+            clubDetails.innerHTML = 
+                `<p><strong>Activities:</strong> ${club.activities.join(", ")}</p>
+                <p><strong>Attendance:</strong> ${club.attendance}</p>
+                <p><strong>Credits:</strong> ${club.credits}</p>`;
+        } else {
+            clubDetails.innerHTML = "";
+        }
+    });
+
+    // Display Waitlist or Rejected Clubs
+    const waitlistRejectedList = document.getElementById("waitlist-rejected");
+    student.waitlistedOrRejectedClubs.forEach(club => {
+        const li = document.createElement("li");
+        li.textContent = club;
+        waitlistRejectedList.appendChild(li);
+    });
+
+    // Edit Profile Button Logic
+    document.getElementById("edit-btn").addEventListener("click", function () {
+        document.getElementById("edit-form").style.display = "block";
+    });
+
+    // Save Changes
+    document.getElementById("save-btn").addEventListener("click", function () {
+        const newName = document.getElementById("name-input").value;
+        const newRegNo = document.getElementById("regno-input").value;
+        const newEmail = document.getElementById("email-input").value;
+        const newProfilePic = document.getElementById("profile-pic-input").value;
+
+        if (newName) student.setName = newName;
+        if (newRegNo) student.setRegNo = newRegNo;
+        if (newEmail) student.setEmail = newEmail;
+        if (newProfilePic) student.setProfilePic = newProfilePic;
+
+        document.getElementById("edit-form").style.display = "none";
+    });
+</script>
+
+</body>
+</html>
