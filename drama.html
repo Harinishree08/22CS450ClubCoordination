@@ -1,0 +1,201 @@
+<!-- Drama Club Page -->
+<!-- Save as drama.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drama Club</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="club-page drama-club">
+        <header>
+            <h1>Drama Club</h1>
+        </header>
+        <section class="intro">
+            <div class="image-section">
+                <img src="img9.jpg" alt="Drama Club" class="main-image" >
+            </div>
+            <div class="text-section">
+                <h2>Welcome to the Drama Club</h2>
+                <p>The Drama Club is a vibrant community where storytelling, acting, and stagecraft come to life. Whether you're an aspiring actor, a passionate scriptwriter, or someone who enjoys the magic of theatre, this is the place for you. Our club offers opportunities to participate in plays, improve public speaking skills, and explore the art of performance.</p>
+            </div>
+        </section>
+        
+        <section class="activities">
+            <h2>Our Activities</h2>
+            <ul>
+                <li>Stage Performances - Participate in grand productions and showcase your talent.</li>
+                <li>Improvisation Workshops - Enhance your spontaneity and creativity.</li>
+                <li>Scriptwriting Sessions - Learn the art of writing compelling stories.</li>
+                <li>Backstage Management - Get hands-on experience with lights, sound, and set design.</li>
+                <li>Theatre Appreciation - Explore the history and impact of drama worldwide.</li>
+            </ul>
+        </section>
+        
+        <section class="gallery-section">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <img src="img8.jpg" alt="Drama Performance" class="fade-in">
+                <img src="img10.webp" alt="Backstage Scene" class="fade-in">
+                <img src="img11.avif" alt="Rehearsal Session" class="fade-in">
+            </div>
+            <button class="animate-btn">Experience the Magic</button>
+        </section>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $(".animate-btn").click(function() {
+                $(".gallery img").each(function(index) {
+                    $(this).delay(300 * index).fadeIn(800);
+                });
+            });
+        });
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #002f6c;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .club-page {
+            width: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        header {
+            text-align: center;
+            font-size: 3em;
+            background: #1a1a2e;
+            padding: 30px;
+            color: #f1c40f;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+        .image-section {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .image-section img {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .text-section {
+            max-width: 50%;
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        .activities, .gallery-section {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .activities ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .activities li {
+            background: #1e2a47;
+            padding: 18px 25px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .activities li:hover {
+            background: #2a3c6c;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .gallery img {
+            width: 270px;
+            height: 180px;
+            display: none;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.6s ease;
+        }
+        
+        .animate-btn {
+            background: #f1c40f;
+            color: #1a1a2e;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, background 0.3s ease;
+            margin-top: 30px;
+        }
+        
+        .animate-btn:hover {
+            transform: scale(1.1);
+            background: #f39c12;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .intro {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .text-section {
+                max-width: 90%;
+                margin-top: 20px;
+            }
+        
+            .gallery {
+                flex-direction: column;
+            }
+        
+            .gallery img {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        
+            .animate-btn {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+        
+        
+    </style>
+</body>
+</html>
